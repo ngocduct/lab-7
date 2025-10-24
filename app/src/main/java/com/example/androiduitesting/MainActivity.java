@@ -64,5 +64,13 @@ public class MainActivity extends AppCompatActivity {
                 cityAdapter.clear();
             }
         });
+
+        cityList.setOnItemClickListener((parent, view, position, id) -> {
+            String selected = cityAdapter.getItem(position);
+            android.content.Intent intent =
+                    new android.content.Intent(MainActivity.this, ShowActivity.class);
+            intent.putExtra(ShowActivity.EXTRA_CITY, selected);
+            startActivity(intent);
+        });
     }
 }
